@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html {
+    font-size: 50px;
+}
+
+@media screen and (max-width: 1366px) {
+    html {
+        font-size: 30px;
+    }
+}
+
+html,
+body,
+.main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    display: flex;
+}
+
+.video-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.5);
+
+    .logo {
+        display: block;
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        width: 6rem;
+        height: 1.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .content {
+        position: relative;
+        width: 12rem;
+        height: 12rem;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4rem;
+            height: 4rem;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: transform 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+            }
+        }
+
+        .author {
+            top: 22%;
+        }
+
+        .in {
+            left: 77%;
+        }
+
+        .text {
+            top: 77%;
+        }
+
+        .aeon {
+            left: 23%;
+        }
+    }
+
+    i {
+        position: absolute;
+        right: 32px;
+        bottom: 32px;
+        color: white;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+    .sound {
+        display: none;
+    }
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 16px;
+    color: #aaa;
+    text-align: center;
+    font-size: 16px;
+}

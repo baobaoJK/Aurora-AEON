@@ -1,0 +1,589 @@
+@keyframes rotateMusic {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html,
+body,
+.main {
+    width: 100%;
+    height: 100%;
+    min-width: 1400px;
+    min-height: 750px;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9e9e9;
+}
+
+// 音乐盒子
+.music-box {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 700px;
+    border-radius: 8px;
+    overflow: hidden;
+
+    // 音乐盒子顶部
+    .music-top {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        background-image: linear-gradient(-90deg, #36df6e, #11a1ca);
+
+        a {
+            display: block;
+            position: relative;
+            left: 16px;
+            width: 180px;
+            height: 45px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    // 音乐盒子侧边栏
+    .music-aside {
+        display: flex;
+        flex-direction: column;
+        float: left;
+        width: 200px;
+        height: 567px;
+        background-color: white;
+        box-sizing: border-box;
+        border-right: 1px solid #E9E9E9;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            opacity: 0.2;
+            background-image: linear-gradient(0deg, #36df6e, #11a1ca);
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 0;
+            background-color: #eee;
+        }
+
+        // 侧边栏 item
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin: 4px 8px;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+
+            i {
+                margin-right: 8px;
+            }
+
+            &:hover {
+                background-color: #E9E9E9;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    // 音乐盒子主窗口
+    .music-main {
+        display: flex;
+        position: relative;
+        float: left;
+        width: 1000px;
+        height: 567px;
+        background-color: white;
+
+        // 首页
+        .home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            p {
+                margin-top: 32px;
+                margin-right: -1rem;
+                font-weight: 100;
+                font-size: 48px;
+                letter-spacing: 1rem;
+            }
+        }
+
+        // 我喜欢的音乐
+        .love {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            .title {
+                margin-right: -1rem;
+                font-weight: 100;
+                font-size: 48px;
+                letter-spacing: 1rem;
+            }
+        }
+
+        // 本地音乐
+        .local {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            .title {
+                margin-right: -1rem;
+                font-weight: 100;
+                font-size: 48px;
+                letter-spacing: 1rem;
+            }
+        }
+
+        // 收藏歌单
+        .star {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            .title {
+                margin-right: -1rem;
+                font-weight: 100;
+                font-size: 48px;
+                letter-spacing: 1rem;
+            }
+        }
+
+        // 音乐信息
+        .play {
+            display: none;
+            width: 100%;
+            height: 100%;
+
+            .music-img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50%;
+                height: 100%;
+
+                .img {
+                    position: relative;
+                    width: 330px;
+                    height: 330px;
+
+                    #musicImg {
+                        position: absolute;
+                        top: calc(50% - 113px);
+                        left: calc(50% - 113px);
+                        width: 226px;
+                        height: 226px;
+                        border-radius: 50%;
+                    }
+                }
+
+                .rotate {
+                    animation: rotateMusic 15s linear infinite;
+                    animation-play-state: paused;
+                }
+            }
+
+            .music-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 50%;
+                height: 100%;
+                text-align: center;
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 30%;
+
+                    .title {
+                        font-weight: 100;
+                        font-size: 24px;
+                    }
+
+                    .artist {
+                        font-weight: 100;
+                        font-size: 16px;
+                    }
+                }
+
+                .lyric {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    height: 70%;
+                    margin-top: 150px;
+
+                    p {
+                        color: #ccc;
+                    }
+                }
+            }
+        }
+
+        // 音乐列表
+        .music-list {
+            display: none;
+            position: absolute;
+            right: 0;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -1px 0px 2px rgba($color: #000000, $alpha: 0.2);
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                opacity: 0.2;
+                background-image: linear-gradient(0deg, #36df6e, #11a1ca);
+            }
+
+            &::-webkit-scrollbar-track {
+                border-radius: 0;
+                background-color: #eee;
+            }
+
+            .list-top {
+                width: 100%;
+                height: 80px;
+                padding: 8px 12px;
+                box-sizing: border-box;
+                border-bottom: 1px solid #dddddd;
+
+                .title {
+                    margin-bottom: 8px;
+                    font-size: 24px;
+                }
+
+                .sub-title {
+                    color: #ccc;
+                    font-size: 14px;
+                }
+            }
+
+            .list-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                height: 36px;
+                font-size: 12px;
+
+                &:hover {
+                    background-color: #F5F5F5;
+
+                    .time {
+                        color: #000000;
+                    }
+                }
+
+                p {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .name {
+                    width: 150px;
+                    max-width: 150px;
+                    margin-left: 16px;
+                }
+
+                .author {
+                    width: 100px;
+                    max-width: 100px;
+                }
+
+                .time {
+                    margin-right: 32px;
+                    color: #ccc;
+                }
+            }
+        }
+    }
+
+    // 音乐盒子底部条
+    .music-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 84px;
+        background-color: white;
+        box-sizing: border-box;
+        border-top: 1px solid #E9E9E9;
+
+        // 音乐信息
+        .music-info {
+            display: flex;
+            width: 300px;
+            height: 48px;
+            margin-left: 16px;
+
+            .music-img {
+                position: relative;
+                width: 48px;
+                height: 48px;
+
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 6px;
+                }
+
+                &:hover {
+                    &::before {
+                        display: flex;
+                    }
+                }
+
+                &::before {
+                    content: '^';
+                    display: none;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    width: 48px;
+                    height: 48px;
+                    padding-top: 6px;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    font-size: 32px;
+                    color: white;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                }
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 252px;
+                height: 48px;
+                margin-left: 16px;
+
+                p {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .singer {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        // 音乐控制器
+        .music-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 450px;
+            height: 52px;
+            font-size: 28px;
+
+            .controls {
+                display: flex;
+                justify-content: center;
+                justify-content: space-between;
+                width: 150px;
+                margin-bottom: 8px;
+                color: #333333;
+
+                i {
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+
+                .pause {
+                    display: none;
+                }
+            }
+
+            .time-bar {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-size: 12px;
+                color: #dddddd;
+
+                .bar {
+                    -webkit-appearance: none;
+                    width: 80%;
+                    height: 3px;
+                    margin: 0 8px;
+                    background-color: #dddddd;
+                    overflow: hidden;
+
+                    &::-webkit-slider-thumb {
+                        -webkit-appearance: none !important;
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -100vw 0 0 100vw #35DD71;
+                    }
+
+                    &::-webkit-slider-runnable-track {
+                        -webkit-appearance: none;
+                        width: 80px;
+                        height: 4px;
+                        background-color: #ccc;
+                    }
+
+                    &::-moz-range-thumb {
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -40px 0 0 40px #35DD71;
+                    }
+
+                    &::-ms-thumb {
+                        -webkit-appearance: none !important;
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -40px 0 0 40px #35DD71;
+                    }
+
+                }
+            }
+        }
+
+        // 音乐选项
+        .music-options {
+            display: flex;
+            position: relative;
+            justify-content: flex-end;
+            align-items: center;
+            width: 300px;
+            height: 48px;
+            margin-right: 32px;
+            font-size: 24px;
+            color: #333333;
+
+            i {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            .loop {
+                margin-right: 24px;
+            }
+
+            .mute {
+                display: none;
+            }
+
+            // 音量条
+            .sound-bar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100px;
+                height: 32px;
+                margin-right: 12px;
+                background-color: white;
+
+                .bar {
+                    -webkit-appearance: none;
+                    width: 80px;
+                    height: 4px;
+                    overflow: hidden;
+
+                    &::-webkit-slider-thumb {
+                        -webkit-appearance: none !important;
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -40px 0 0 40px #35DD71;
+                    }
+
+                    &::-webkit-slider-runnable-track {
+                        -webkit-appearance: none;
+                        width: 80px;
+                        height: 4px;
+                        background-color: #ccc;
+                    }
+
+                    &::-moz-range-thumb {
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -40px 0 0 40px #35DD71;
+                    }
+
+                    &::-ms-thumb {
+                        -webkit-appearance: none !important;
+                        background: #35DD71;
+                        height: 0px;
+                        width: 0px;
+                        border-radius: 50%;
+                        box-shadow: -40px 0 0 40px #35DD71;
+                    }
+
+                }
+            }
+        }
+    }
+}
